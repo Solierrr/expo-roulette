@@ -1,4 +1,36 @@
-# Finalidade do repositório
+# Expo Roulette
+
+Roleta Solaria em HTML, CSS e JavaScript puro. A aplicação publicada fica em `public/`, sem backend ou build. O diretório `gallery/` herdado do template não participa da publicação.
+
+Execute `npm start` (Node.js 22+) e abra http://localhost:4178. Para outra porta: `node serve.mjs 4180`. Testes: `npm test`.
+
+## Configuração
+
+Edite `public/config.json`; o arquivo é relido antes de cada giro. Os oito segmentos mostram duas cópias de Marca página, Brownie, Byte e Kit Chaveiro. Repetições visuais não multiplicam chances ou cotas.
+
+`releaseStartsAt` é `2026-11-06T11:00:00-03:00`: 6 de novembro de 2026 às 11h de Brasília, sem saldo inicial. Antes das 12h, Byte e Brownie não podem sair. Às 12h libera 1 Byte e 5 Brownies; às 13h, os totais liberados são 2 e 10; às 14h, 3 e 15. Cada hora completa acrescenta mais 1 Byte e 5 Brownies. Prêmios sorteados são descontados, e o saldo não utilizado acumula. O início é fixo: não reinicia por dia nem ao abrir a página.
+
+Byte tem peso `0.12 × saldo disponível`: com um Byte e Brownie disponível, a chance é aproximadamente 0,63%; com cinco Bytes, aproximadamente 3,06%. Brownie tem peso 4. Marca página tem peso 5 e Kit Chaveiro, 10; ambos ilimitados. Sem saldo, um prêmio limitado não pode sair. A liberação permite que saia, sem garantir o resultado. Os segmentos iguais não representam as probabilidades.
+
+`forcedResultId: null` seleciona por pesos. Fixar um id respeita habilitação e saldo. `durationMs` controla a duração, `turns` as voltas e `visualRepeats` as repetições visuais (2).
+
+O consumo persiste em localStorage (`expo-roulette-stock-v2`) neste navegador e origem. Web Locks serializa reservas entre abas. O consumo é salvo antes da animação; recarregar não devolve o prêmio. Limpar dados ou trocar navegador/aparelho/origem cria um histórico separado. O horário vem do dispositivo. Não há saldo global entre aparelhos. Alterar o início do evento exige uma nova chave de armazenamento ou a remoção explícita do estado anterior.
+
+## Visual e assets
+
+Sem cabeçalho, introdução ou rodapé. Centro laranja com apenas `IconRefresh` de `@tabler/icons-react@3.49.0`, a mesma biblioteca do web-app, incorporado ao HTML. Animação de giro, zoom e seta. Movimento reduzido pula as animações. Clique, Tab + Enter ou espaço fora dos botões iniciam o giro.
+
+As dependências de desenvolvimento servem apenas para gerar o ícone com `npm run build:icons`. Para usar a instalação existente: `node scripts/export-icon.mjs /caminho/web-app`. Licenças dos assets em `public/assets/`.
+
+## GitHub Pages
+
+O workflow `.github/workflows/pages.yml` testa as regras e publica `public/` em pushes na `main` ou execução manual. Pull requests só validam. Fonte do Pages: GitHub Actions. Os caminhos são relativos para funcionar em `/expo-roulette/`.
+
+Site: https://solierrr.github.io/expo-roulette/
+
+---
+
+## Referência do template original
 
 Este repositório é o ponto de partida para novos serviços da Solaria. Ao criar um projeto a partir deste template, substitua os textos de exemplo, preencha as configurações da aplicação e mantenha a documentação alinhada ao que o serviço realmente oferece. Use `ARCHITECTURE.md` para registrar a organização do código, `RUNNING.md` para explicar como executar a aplicação e `DEPLOYMENT.md` para descrever seu deploy. O diretório `http/` reúne requisições de exemplo para chamar a API localmente durante o desenvolvimento.
 

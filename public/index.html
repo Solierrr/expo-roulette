@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fafafa"><title>Roleta · Solaria</title>
+  <link rel="stylesheet" href="style.css"><script type="module" src="app.js"></script>
+</head>
+<body>
+  <main class="surface"><section class="canvas" aria-label="Roleta de brindes">
+    <div class="viewport"><div class="camera"><div class="wheel-stage"><div class="wheel-shadow"></div><button id="spin" class="wheel-button" aria-label="Girar roleta" disabled><svg id="wheel" viewBox="0 0 600 600" aria-hidden="true"></svg><span class="hub"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-refresh" aria-hidden="true"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"></path><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"></path></svg></span></button><div class="pointer" aria-hidden="true"><svg viewBox="0 0 44 62"><path d="M5 9Q22-2 39 9L27 50Q22 64 17 50Z" fill="#242628"/><circle cx="22" cy="15" r="5" fill="#fff"/></svg></div></div></div></div>
+    <div class="status-area" aria-live="polite" aria-atomic="true"><p id="status"></p></div><div class="result" id="result" hidden><span>DESTA VEZ, SAIU</span><strong id="result-label"></strong><button id="again">Girar novamente <span aria-hidden="true">↗</span></button></div><div id="confetti" aria-hidden="true"></div>
+  </section></main>
+</body>
+</html>

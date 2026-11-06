@@ -1,0 +1,15 @@
+{
+  "name": "expo-roulette",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node serve.mjs",
+    "build:icons": "node scripts/export-icon.mjs",
+    "test": "node --test rules.test.mjs inventory.test.mjs"
+  },
+  "devDependencies": {
+    "@tabler/icons-react": "3.49.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  }
+}

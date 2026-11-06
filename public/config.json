@@ -1,0 +1,13 @@
+{
+  "durationMs": 7800,
+  "turns": 7,
+  "visualRepeats": 2,
+  "releaseStartsAt": "2026-11-06T11:00:00-03:00",
+  "forcedResultId": null,
+  "items": [
+    { "id": "marca-pagina", "label": "Marca página", "enabled": true, "weight": 5 },
+    { "id": "brownie", "label": "Brownie", "enabled": true, "weight": 4, "releasePerHour": 5 },
+    { "id": "byte", "label": "Byte", "enabled": true, "weight": 0.12, "releasePerHour": 1, "chanceScalesWithStock": true },
+    { "id": "kit-chaveiro", "label": "Kit Chaveiro", "enabled": true, "weight": 10 }
+  ]
+}

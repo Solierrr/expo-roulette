@@ -1,0 +1,56 @@
+name: Roulette Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "public/**"
+      - "*.test.mjs"
+      - "package.json"
+      - ".github/workflows/pages.yml"
+  pull_request:
+    paths:
+      - "public/**"
+      - "*.test.mjs"
+      - "package.json"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: roulette-pages-${{ github.event_name == 'pull_request' && github.ref || 'deploy' }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Validate JavaScript and prize rules
+        run: |
+          node --check public/app.js
+          node --check public/inventory.mjs
+          node --test rules.test.mjs inventory.test.mjs
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+      - name: Deploy roulette
+        id: deployment
+        uses: actions/deploy-pages@v4
