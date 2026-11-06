@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@import "@solaria.network/web-lib/theme.css";
+@source "./node_modules/@solaria.network/web-lib/dist";
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  overflow: hidden;
+}
+button,
+select {
+  font: inherit;
+}
+
+/* A casca ocupa a janela; o conteúdo usa o resto da altura */
+.gx-shell {
+  height: 100dvh;
+}
+.gx-body {
+  min-height: 0;
+}
+.gx-main {
+  padding: 1rem;
+}

@@ -1,0 +1,43 @@
+name: Preview
+
+# Sem a pasta gallery/ (repositório que não tem preview) este workflow não faz nada.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - "gallery/**"
+      - ".github/workflows/preview.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: preview-${{ github.event_name == 'pull_request' && github.ref || 'pages' }}
+  cancel-in-progress: true
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+
+    outputs:
+      gallery: ${{ steps.detect.outputs.gallery }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: detect
+        run: |
+          if [ -f gallery/package.json ]; then echo "gallery=true" >> "$GITHUB_OUTPUT"; else echo "gallery=false" >> "$GITHUB_OUTPUT"; fi
+
+  preview:
+    needs: detect
+    if: needs.detect.outputs.gallery == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: Solierrr/.github/.github/workflows/preview-gallery.yml@main
+    with:
+      publish: ${{ github.event_name != 'pull_request' }}

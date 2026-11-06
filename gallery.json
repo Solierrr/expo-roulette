@@ -1,0 +1,14 @@
+{
+  "name": "generic-template",
+  "kind": "gallery",
+  "title": {
+    "pt-BR": "Preview do repositório",
+    "en-US": "Repository preview",
+    "es-ES": "Vista previa del repositorio"
+  },
+  "description": {
+    "pt-BR": "Descreva o que o preview mostra.",
+    "en-US": "Describe what the preview shows.",
+    "es-ES": "Describe lo que muestra la vista previa."
+  }
+}
