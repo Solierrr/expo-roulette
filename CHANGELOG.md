@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/Solierrr/expo-roulette/compare/v0.3.0...v0.4.0) (2026-11-06)
+
+
+### Features
+
+* add expo roulette with scheduled prize quotas ([6823c60](https://github.com/Solierrr/expo-roulette/commit/6823c603f23c8d5fb53189efbb1facef50fee57d))
+
 ## [0.3.0](https://github.com/Solierrr/generic-template/compare/v0.2.0...v0.3.0) (2026-11-01)
 
 
